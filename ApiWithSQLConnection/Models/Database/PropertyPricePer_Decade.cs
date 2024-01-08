@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiWithSQLConnection.Models.Database
 {
@@ -9,5 +8,7 @@ namespace ApiWithSQLConnection.Models.Database
         public int PropertyID { get; set; }
         public int Decade { get; set; }
         public decimal Price { get; set; }
+
+        // Relações ou outras propriedades podem ser adicionadas aqui se necessário
     }
 }

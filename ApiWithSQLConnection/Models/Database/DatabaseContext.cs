@@ -27,7 +27,13 @@ namespace ApiWithSQLConnection.Models.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Se necessário, use o ModelBuilder para configurar chaves estrangeiras, índices, etc.
+            base.OnModelCreating(modelBuilder);
+
+            // Configuração da chave primária composta para PropertyPricePer_Decade
+            modelBuilder.Entity<PropertyPricePer_Decade>()
+                .HasKey(pppd => new { pppd.PropertyID, pppd.Decade });
+
+            // Outras configurações do ModelBuilder...
         }
     }
 }

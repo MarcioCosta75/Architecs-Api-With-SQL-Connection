@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiWithSQLConnection", "ApiWithSQLConnection\ApiWithSQLConnection.csproj", "{477768B3-35E0-43C9-8C7D-211F278919FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiWithSQLConnection", "ApiWithSQLConnection.csproj", "{85737655-59FD-4661-A3F1-B82FB5C237EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{477768B3-35E0-43C9-8C7D-211F278919FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{477768B3-35E0-43C9-8C7D-211F278919FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{477768B3-35E0-43C9-8C7D-211F278919FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{477768B3-35E0-43C9-8C7D-211F278919FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85737655-59FD-4661-A3F1-B82FB5C237EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85737655-59FD-4661-A3F1-B82FB5C237EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85737655-59FD-4661-A3F1-B82FB5C237EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85737655-59FD-4661-A3F1-B82FB5C237EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CB357390-EB3F-4BF1-AB16-75023EFCA991}
+		SolutionGuid = {1AAA1A70-FCBC-49EB-9153-5C5190A7E219}
 	EndGlobalSection
 EndGlobal
