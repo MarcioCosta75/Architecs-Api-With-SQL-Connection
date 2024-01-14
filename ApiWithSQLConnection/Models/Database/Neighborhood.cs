@@ -4,8 +4,9 @@ namespace ApiWithSQLConnection.Models.Database
 {
     public class Neighborhood
     {
-        [Key]
         public int NeighborhoodID { get; set; }
-        // Additional properties will be added here as needed.
+        public string Name { get; set; }
+
+        // Outras propriedades e relações...
     }
 }

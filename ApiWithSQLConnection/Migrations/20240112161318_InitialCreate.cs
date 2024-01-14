@@ -3,6 +3,8 @@ using MySql.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ApiWithSQLConnection.Migrations
 {
     /// <inheritdoc />
@@ -35,7 +37,9 @@ namespace ApiWithSQLConnection.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Year = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "longtext", nullable: false),
-                    Impact = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                    LinkExtractedText = table.Column<string>(type: "longtext", nullable: false),
+                    Impact = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    OriginalURL = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,7 +84,8 @@ namespace ApiWithSQLConnection.Migrations
                 columns: table => new
                 {
                     NeighborhoodID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,7 +100,9 @@ namespace ApiWithSQLConnection.Migrations
                     PropertyID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Decade = table.Column<int>(type: "int", nullable: false),
-                    PriceValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    PriceValue = table.Column<string>(type: "longtext", nullable: false),
+                    LinkExtractedText = table.Column<string>(type: "longtext", nullable: false),
+                    OriginalURL = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,10 +116,11 @@ namespace ApiWithSQLConnection.Migrations
                 {
                     PropertyID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Address = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    PropertyType = table.Column<string>(type: "longtext", nullable: false),
+                    Price = table.Column<float>(type: "float", nullable: false),
+                    LinkExtractedText = table.Column<string>(type: "longtext", nullable: false),
+                    OriginalURL = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -125,7 +133,7 @@ namespace ApiWithSQLConnection.Migrations
                 columns: table => new
                 {
                     PropertyID = table.Column<int>(type: "int", nullable: false),
-                    Decade = table.Column<int>(type: "int", nullable: false),
+                    Decade = table.Column<string>(type: "varchar(255)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
@@ -174,8 +182,10 @@ namespace ApiWithSQLConnection.Migrations
                     SentimentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Year = table.Column<int>(type: "int", nullable: false),
+                    Comments = table.Column<string>(type: "longtext", nullable: false),
                     SentimentScore = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Comments = table.Column<string>(type: "longtext", nullable: false)
+                    LinkExtractedText = table.Column<string>(type: "longtext", nullable: false),
+                    OriginalURL = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -188,13 +198,51 @@ namespace ApiWithSQLConnection.Migrations
                 columns: table => new
                 {
                     RegionID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Regions", x => x.RegionID);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "Decades",
+                column: "DecadeValue",
+                values: new object[]
+                {
+                    1960,
+                    1970,
+                    1980,
+                    1990,
+                    2000,
+                    2010,
+                    2020
+                });
+
+            migrationBuilder.InsertData(
+                table: "Neighborhoods",
+                columns: new[] { "NeighborhoodID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Belém" },
+                    { 2, "Alcântara" },
+                    { 3, "Baixa" },
+                    { 4, "Benfica" },
+                    { 5, "Laranjeiras" },
+                    { 6, "Alameda" },
+                    { 7, "Penha De França" },
+                    { 8, "Lumiar" },
+                    { 9, "Alvalade" },
+                    { 10, "Olivais" },
+                    { 11, "Parque Das Nações" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Regions",
+                columns: new[] { "RegionID", "Name" },
+                values: new object[] { 1, "Lisboa" });
         }
 
         /// <inheritdoc />

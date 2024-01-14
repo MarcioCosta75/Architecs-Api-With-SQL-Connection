@@ -6,6 +6,8 @@ namespace ApiWithSQLConnection.Models.Database
     {
         [Key]
         public int RegionID { get; set; }
+
+        public string Name { get; set; }
         // Additional properties will be added here as needed.
     }
 }

@@ -6,7 +6,7 @@ namespace ApiWithSQLConnection.Models.Database
     {
         [ForeignKey("Property")]
         public int PropertyID { get; set; }
-        public int Decade { get; set; }
+        public string Decade { get; set; }
         public decimal Price { get; set; }
 
         // Relações ou outras propriedades podem ser adicionadas aqui se necessário

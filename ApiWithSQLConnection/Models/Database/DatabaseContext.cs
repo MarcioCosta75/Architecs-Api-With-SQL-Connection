@@ -23,17 +23,46 @@ namespace ApiWithSQLConnection.Models.Database
         public DbSet<Government_Policy> Government_Policies { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<Neighborhood> Neighborhoods { get; set; }
-        // Outros DbSets podem ser adicionados aqui conforme necessário
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configuração da chave primária composta para PropertyPricePer_Decade
+            // Configuration of the composite primary key for PropertyPricePer_Decade
             modelBuilder.Entity<PropertyPricePer_Decade>()
                 .HasKey(pppd => new { pppd.PropertyID, pppd.Decade });
 
-            // Outras configurações do ModelBuilder...
+            // Seeding to the Decade table
+            modelBuilder.Entity<Decade>().HasData(
+                new Decade { DecadeValue = 1960 },
+                new Decade { DecadeValue = 1970 },
+                new Decade { DecadeValue = 1980 },
+                new Decade { DecadeValue = 1990 },
+                new Decade { DecadeValue = 2000 },
+                new Decade { DecadeValue = 2010 },
+                new Decade { DecadeValue = 2020 }
+            );
+
+            // Seeding to the Neighborhood table
+            modelBuilder.Entity<Neighborhood>().HasData(
+                new Neighborhood { NeighborhoodID = 1, Name = "Belém" },
+                new Neighborhood { NeighborhoodID = 2, Name = "Alcântara" },
+                new Neighborhood { NeighborhoodID = 3, Name = "Baixa" },
+                new Neighborhood { NeighborhoodID = 4, Name = "Benfica" },
+                new Neighborhood { NeighborhoodID = 5, Name = "Laranjeiras" },
+                new Neighborhood { NeighborhoodID = 6, Name = "Alameda" },
+                new Neighborhood { NeighborhoodID = 7, Name = "Penha De França" },
+                new Neighborhood { NeighborhoodID = 8, Name = "Lumiar" },
+                new Neighborhood { NeighborhoodID = 9, Name = "Alvalade" },
+                new Neighborhood { NeighborhoodID = 10, Name = "Olivais" },
+                new Neighborhood { NeighborhoodID = 11, Name = "Parque Das Nações" }
+            );
+
+            // Seeding to the Region table
+            modelBuilder.Entity<Region>().HasData(
+                new Region { RegionID = 1, Name = "Lisboa" }
+            );
+
         }
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiWithSQLConnection.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240108142935_InitialCreate")]
+    [Migration("20240112161318_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,6 +30,36 @@ namespace ApiWithSQLConnection.Migrations
                     b.HasKey("DecadeValue");
 
                     b.ToTable("Decades");
+
+                    b.HasData(
+                        new
+                        {
+                            DecadeValue = 1960
+                        },
+                        new
+                        {
+                            DecadeValue = 1970
+                        },
+                        new
+                        {
+                            DecadeValue = 1980
+                        },
+                        new
+                        {
+                            DecadeValue = 1990
+                        },
+                        new
+                        {
+                            DecadeValue = 2000
+                        },
+                        new
+                        {
+                            DecadeValue = 2010
+                        },
+                        new
+                        {
+                            DecadeValue = 2020
+                        });
                 });
 
             modelBuilder.Entity("ApiWithSQLConnection.Models.Database.GovPolicy_Decade", b =>
@@ -94,6 +124,14 @@ namespace ApiWithSQLConnection.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("LinkExtractedText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OriginalURL")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
@@ -108,9 +146,70 @@ namespace ApiWithSQLConnection.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("NeighborhoodID");
 
                     b.ToTable("Neighborhoods");
+
+                    b.HasData(
+                        new
+                        {
+                            NeighborhoodID = 1,
+                            Name = "Belém"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 2,
+                            Name = "Alcântara"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 3,
+                            Name = "Baixa"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 4,
+                            Name = "Benfica"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 5,
+                            Name = "Laranjeiras"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 6,
+                            Name = "Alameda"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 7,
+                            Name = "Penha De França"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 8,
+                            Name = "Lumiar"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 9,
+                            Name = "Alvalade"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 10,
+                            Name = "Olivais"
+                        },
+                        new
+                        {
+                            NeighborhoodID = 11,
+                            Name = "Parque Das Nações"
+                        });
                 });
 
             modelBuilder.Entity("ApiWithSQLConnection.Models.Database.Price", b =>
@@ -122,8 +221,17 @@ namespace ApiWithSQLConnection.Migrations
                     b.Property<int>("Decade")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("PriceValue")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("LinkExtractedText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OriginalURL")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PriceValue")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("PropertyID");
 
@@ -136,18 +244,20 @@ namespace ApiWithSQLConnection.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Address")
+                    b.Property<string>("LinkExtractedText")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Type")
+                    b.Property<string>("OriginalURL")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("PropertyType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -162,8 +272,8 @@ namespace ApiWithSQLConnection.Migrations
                     b.Property<int>("PropertyID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Decade")
-                        .HasColumnType("int");
+                    b.Property<string>("Decade")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -180,6 +290,14 @@ namespace ApiWithSQLConnection.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LinkExtractedText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OriginalURL")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -245,9 +363,20 @@ namespace ApiWithSQLConnection.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("RegionID");
 
                     b.ToTable("Regions");
+
+                    b.HasData(
+                        new
+                        {
+                            RegionID = 1,
+                            Name = "Lisboa"
+                        });
                 });
 #pragma warning restore 612, 618
         }

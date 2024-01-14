@@ -8,6 +8,8 @@ namespace ApiWithSQLConnection.Models.Database
         [Key, ForeignKey("Property")]
         public int PropertyID { get; set; }
         public int Decade { get; set; }
-        public decimal PriceValue { get; set; }
+        public string PriceValue { get; set; }
+        public string LinkExtractedText { get; set; }
+        public string OriginalURL { get; set; }
     }
 }
